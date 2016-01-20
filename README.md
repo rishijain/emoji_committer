@@ -1,8 +1,12 @@
 # EmojiCommitter
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/emoji_committer`. To experiment with that code, run `bin/console` for an interactive prompt.
+I like to add emoji's to my commit messages. I don't randomly add any emoji after the commit message. Rather they are carefully choosen. It depends on the type of commit message I have written. After seeing the image, you may be able to understand what I am talking about. 
 
-TODO: Delete this and the text above, and describe your gem
+This gem is my attempt to automate the process of manually choosing emoji and adding it to the message. It would analyze the commit message, choose an emoji which fits the analysis and use git hooks to append the emoji to entered commit message.
+
+![alt tag](https://raw.github.com/rishijain/emoji_committer/master/sample.png)
+
+P.S It is a very personal choice of adding emojis to commit message. I think adding emojis make the commit message a bit more interesting. It is totally OK if you think this is a stupid thing to do. But it is my stupid thing to do. So don't worry about it and don't use it.
 
 ## Installation
 
@@ -19,18 +23,3 @@ And then execute:
 Or install it yourself as:
 
     $ gem install emoji_committer
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/emoji_committer.
-
