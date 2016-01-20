@@ -1,8 +1,4 @@
-require 'tokenizer'
-
 module EmojiCommitter
-  include Tokenizer
-
   class Analyzer
 
     #analyze the commit message
@@ -16,9 +12,17 @@ module EmojiCommitter
       @commit_message = commit_message
     end
 
-    def run!
-      p '1----1'
-      p split_message(@commit_message)
+    #step1
+    def splitted_message
+      EmojiCommitter::Tokenizer.split_message(@commit_message)
+    end
+
+    #step2
+    def assign_points_to_words
+      #assume the splitted_message is ["build", "is", "now", "fixed"]
+      #so the return value from this should be in format of
+      # {"build" => 3, "fixed" => 5, "is" => 0, "now" => 0}
+
     end
 
   end
