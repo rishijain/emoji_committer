@@ -1,9 +1,11 @@
 module EmojiCommitter
-  ZeroWeightWord = [
-    'a',
-    'an',
-    'the',
-    'is',
-    'now'
-  ]
+  module Words
+    ZeroWeightage = [
+      'a',
+      'an',
+      'the',
+      'is',
+      'now'
+    ]
+  end
 end
