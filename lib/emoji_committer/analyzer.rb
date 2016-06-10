@@ -22,8 +22,9 @@ module EmojiCommitter
       #assume the splitted_message is ["build", "is", "now", "fixed"]
       #so the return value from this should be in format of
       # {"build" => 3, "fixed" => 5, "is" => 0, "now" => 0}
-
     end
+
+    #step3
 
   end
 end
