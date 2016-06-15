@@ -23,7 +23,7 @@ module EmojiCommitter
       #assume the splitted_message is ["build", "is", "now", "fixed"]
       #so the return value from this should be in format of
       # {"build" => 3, "fixed" => 5, "is" => 0, "now" => 0}
-      splitted_message.each {|word| assign_point(word)}
+      splitted_message.each {|word| assign_point(word.downcase)}
     end
 
     #step3
