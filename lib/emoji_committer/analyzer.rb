@@ -10,6 +10,7 @@ module EmojiCommitter
 
     def initialize(commit_message)
       @commit_message = commit_message
+      @score = Hash.new(0)
     end
 
     #step1
@@ -22,9 +23,21 @@ module EmojiCommitter
       #assume the splitted_message is ["build", "is", "now", "fixed"]
       #so the return value from this should be in format of
       # {"build" => 3, "fixed" => 5, "is" => 0, "now" => 0}
+      splitted_message.each {|word| assign_point(word)}
     end
 
     #step3
+
+    private
+
+    def assign_point(word)
+      if EmojiCommitter::Words::ZeroWeightage.include?(word)
+        @score['word'] = 0
+      elsif EmojiCommitter::Words::OneWeightage.include?(word)
+        @score['word'] = 1
+      end
+    end
+
 
   end
 end
