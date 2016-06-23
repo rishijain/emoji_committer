@@ -13,12 +13,18 @@ module EmojiCommitter
       @score = Hash.new(0)
     end
 
-    #step1
+
+    def run
+      assign_points_to_words
+      total_points
+    end
+
+    private
+
     def splitted_message
       EmojiCommitter::Tokenizer.split_message(@commit_message)
     end
 
-    #step2
     def assign_points_to_words
       #assume the splitted_message is ["build", "is", "now", "fixed"]
       #so the return value from this should be in format of
@@ -26,18 +32,19 @@ module EmojiCommitter
       splitted_message.each {|word| assign_point(word.downcase)}
     end
 
-    #step3
-
-    private
-
     def assign_point(word)
       if EmojiCommitter::Words::ZeroWeightage.include?(word)
-        @score['word'] = 0
+        @score['zero_weight'] = 0
       elsif EmojiCommitter::Words::OneWeightage.include?(word)
-        @score['word'] = 1
+        @score['one_weight'] += 1
+      else
+        @score['random_weight'] += 0.25
       end
     end
 
+    def category_with_max_points
+      @score.max_by {|k, v| v}
+    end
 
   end
 end
