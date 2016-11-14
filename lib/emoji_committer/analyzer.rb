@@ -16,7 +16,7 @@ module EmojiCommitter
 
     def run
       assign_points_to_words
-      total_points
+      @words_in_order_of_points = [word_with_highest_point, word_with_second_highest_point]
     end
 
     private
@@ -34,17 +34,25 @@ module EmojiCommitter
 
     def assign_point(word)
       if EmojiCommitter::Words::ZeroWeightage.include?(word)
-        @score['zero_weight'] = 0
+        @score[word] = 0
       elsif EmojiCommitter::Words::OneWeightage.include?(word)
-        @score['one_weight'] += 1
+        @score[word] += 1
       else
-        @score['random_weight'] += 0.25
+        @score[word] += 0.25
       end
     end
 
     def category_with_max_points
-      @score.max_by {|k, v| v}
+      word_with_max_point = @score.max_by {|k, v| v}[0]
+      @score.delete(word_with_max_point)
     end
 
+    def word_with_highest_point
+      category_with_max_points
+    end
+
+    def word_with_second_highest_point
+      category_with_max_points
+    end
   end
 end
