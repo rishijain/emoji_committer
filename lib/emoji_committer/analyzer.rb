@@ -16,7 +16,7 @@ module EmojiCommitter
 
     def run
       assign_points_to_words
-      @words_in_order_of_points = [word_with_highest_point, word_with_second_highest_point]
+      @words_in_order_of_points = [word_with_highest_point, word_with_second_highest_point].compact
     end
 
     private
@@ -43,6 +43,7 @@ module EmojiCommitter
     end
 
     def category_with_max_points
+      return nil if @score.keys.empty?
       word_with_max_point = @score.max_by {|k, v| v}[0]
       @score.delete(word_with_max_point)
     end
