@@ -4,9 +4,8 @@ module EmojiCommitter
     #analyze the commit message
     #by breaking the commit message into words
     #and assign points to each word
-    #the words will have to be grouped under different categories and thus categories
-    #will also be scored.
-    #and the category with highest score will decide what type of emoji to add to commit message.
+    #and then return words with 2 highest points and
+    #then emoji based on those words will be added to the commit
 
     def initialize(commit_message)
       @commit_message = commit_message
@@ -16,7 +15,7 @@ module EmojiCommitter
 
     def run
       assign_points_to_words
-      @words_in_order_of_points = [word_with_highest_point, word_with_second_highest_point].compact
+      top_words_in_order_of_points = [word_with_highest_point, word_with_second_highest_point].compact
     end
 
     private
